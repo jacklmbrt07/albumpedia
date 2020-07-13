@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
 
     <!-- Link to local CSS  -->
     <link rel="stylesheet" href="./css/style.css" />
@@ -16,13 +19,59 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
 
     <!-- Local JS -->
     <script defer src="./js/script.js"></script>
-    <title>Document</title>
+
+    <title>Albumpedia</title>
 </head>
 <body>
-    
+    <nav class="topnav">
+        <h1 id="title">Albumpedia</h1>
+        <div id="search-container">
+            <form action="">
+                <input type="text" placeholder="Artist Name" id="input" />
+                <input type="submit" value="Search" />
+            </form>
+        </div>
+    </nav>
+    <main class="container">
+        <div><h3><span id="artist-name"></span></h3></div>
+        <div><img src="" alt="" id="artist-portrait">artist image</div>
+        <div><p>bio goes here <span id="artist-bio"></span></p></div>
+        <div>
+            <ol>
+                <li>artist origin w/ flag icon: <span id="origin"></span></li>
+                <li>year formed: <span id="year-formed"></span></li>
+                <li>member names: <span id="members"></span></li>
+                <li>genre: <span id="genre"></span></li>
+            </ol>
+        </div>
+    </main>
+
+    <!-- modal structure -->
+    <div id="modal1" class="modal">
+        <li>
+            <div>album 1 name <span>detail link</span>
+            </div>
+        </li>
+        <li>
+            <div>album 2 name <span>detail link</span>
+            </div>
+        </li>
+        <div class="modal-content">
+            <img src="" alt="" id="cover">
+            <h4 id="album-name"></h4>
+            <p id="year"></p>
+            <p id="record-label"></p>
+            <p id="album-bio"></p>
+            <ol id="tracklist"></ol>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close"></a>
+        </div>            
+    </div>
+    <footer>Footer</footer>
 </body>
 </html>

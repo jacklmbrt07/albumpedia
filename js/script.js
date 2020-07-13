@@ -1,23 +1,41 @@
-alert('js')
+
 
 /*----- constants -----*/
-const url = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=radiohead`;
+const artistURL = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=radiohead`;
 
 /*----- app's state (variables) -----*/
+let userArtist;
 /*----- cached element references -----*/
+const $artistName = $('#artist-name');
+const $artistPortrait = $('#artist-portrait');
+const $artistBio = $('#artist-bio');
+const $artistOrigin = $('#origin');
+const $artistYear = $('#year-formed');
+const $artistMembers = $('#members');
+const $artistGenre = $('#genre');
+const $input = $('input[type="text"]')
+
 /*----- event listeners -----*/
+$('form').on('submit', handleGetData);
 /*----- functions -----*/
 //initialize modal
 
 // retrieve ajax from server
-$.ajax(url).then(
-    function(data){
-        console.log('data is ' + data);
-    },
-    function(error){
-        console.log('error is ' + error);
-    }
-)
+function handleGetData(event) {
+    event.preventDefault()
+    userArtist =$input.val();
+    $.ajax({
+        url: "https://www.theaudiodb.com/api/v1/json/1/search.php?s=" + userArtist
+    }).then(
+        (data) => {
+            artistData = data;
+            console.log('data is ' + data);
+        },
+        (error) => {
+            console.log('error is ' + error);
+        }
+    )
+}
     
 // APIKEY should be set to 1
     // Return Artist details from artist name
