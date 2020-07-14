@@ -18,13 +18,13 @@ const $input = $('input[type="text"]');
 
 
 /*----- event listeners -----*/
-$('form').on('submit', handleGetArtistData);
-// handleGetArtistData();
+// $('form').on('submit', handleGetArtistData);
+handleGetArtistData();
 /*----- functions -----*/
 // retrieve ajax from server
 function handleGetArtistData(/*event*/) {
-    event.preventDefault()
-    userArtist = $input.val();
+    // event.preventDefault()
+    userArtist = "radiohead" //$input.val();
     $.ajax({
         url: `https://www.theaudiodb.com/api/v1/json/${config.API_KEY}/search.php?s=${userArtist}` // ${userArtist}
     }).then(
@@ -54,7 +54,10 @@ function generateAlbumHTML(format) {
         return (a.intYearReleased > b.intYearReleased) ? 1 : -1
     }).map(album => { //map is returning html string
         if (album.strReleaseFormat === format){
-        return `<li class="list-group-item">${album.strAlbum} - <span>${album.intYearReleased}</span></li>`;
+        return `<li class="list-group-item">
+                    <img src="${album.strAlbumThumb}" alt="${album.strAlbum}" height="100" width="100">   
+                    ${album.strAlbum} - ${album.intYearReleased}
+                </li>`;
         }
     });
 };
