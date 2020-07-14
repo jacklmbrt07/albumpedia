@@ -15,7 +15,10 @@ const $flag = $('#flag')
 const $artistBirth = $('#year-formed');
 const $artistDeath = $('#year-disbanded');
 const $artistGenre = $('#genre');
-const $input = $('input[type="text"]')
+const $ulAlbums = $('#albums');
+const $ulEPs = $('#eps');
+const $ulLiveRecs = $('#live-recs')
+const $input = $('input[type="text"]');
 
 /*----- event listeners -----*/
 // $('form').on('submit', handleGetData);
@@ -43,7 +46,9 @@ function handleGetArtistData(event) {
     }).then(
         (data) => {
             albumData = data.album; // acceses an array of object per album 
-            generateAlbumHTML();
+            $ulAlbums.append(generateAlbumHTML("Album"));
+            $ulEPs.append(generateAlbumHTML("EP"));
+            $ulLiveRecs.append(generateAlbumHTML("Live"));
         },
         (error) => {
             console.log("error is " + error);
@@ -51,11 +56,16 @@ function handleGetArtistData(event) {
     )
 }
 
-function generateAlbumHTML() {
-    return albumData.map(album => {
-        return `<li>${album.strAlbum}</li>`;
+function generateAlbumHTML(format) {
+    return albumData.sort((a, b) => {  // sort is rearranging albums chronologically
+        return (a.intYearReleased > b.intYearReleased) ? 1 : -1
+    }).map(album => { //map is returning html string
+        if (album.strReleaseFormat === format){
+        return `<li>${album.strAlbum} - <span>${album.intYearReleased}</span></li>`;
+        }
     });
 };
+
 
 function render(){
     $artistName.html(artistData.strArtist);
