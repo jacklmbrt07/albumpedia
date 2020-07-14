@@ -5,11 +5,13 @@ const artistURL = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=radiohe
 
 /*----- app's state (variables) -----*/
 let userArtist;
+let apiKey = "1"; // free
 /*----- cached element references -----*/
 const $artistName = $('#artist-name');
 const $artistPortrait = $('#artist-portrait img');
 const $artistBio = $('#artist-bio');
 const $artistOrigin = $('#origin');
+const $flag = $('#flag')
 const $artistBirth = $('#year-formed');
 const $artistDeath = $('#year-disbanded');
 const $artistGenre = $('#genre');
@@ -17,32 +19,50 @@ const $input = $('input[type="text"]')
 
 /*----- event listeners -----*/
 // $('form').on('submit', handleGetData);
-handleGetData();
+handleGetArtistData();
 /*----- functions -----*/
 //initialize modal
 
 // retrieve ajax from server
-function handleGetData(event) {
+function handleGetArtistData(event) {
     // event.preventDefault()
     userArtist = $input.val();
     $.ajax({
         url: "https://www.theaudiodb.com/api/v1/json/1/search.php?s=radiohead" //+ userArtist
     }).then(
         (data) => {
-            artistData = data.artists[0];
+            artistData = data.artists[0];// accesses an object of artist info
             render();
         },
         (error) => {
             console.log('error is ' + error);
         }
+    );
+    $.ajax({
+        url: "https://www.theaudiodb.com/api/v1/json/1/searchalbum.php?s=radiohead"
+    }).then(
+        (data) => {
+            albumData = data.album; // acceses an array of object per album 
+            generateAlbumHTML();
+        },
+        (error) => {
+            console.log("error is " + error);
+        }
     )
 }
+
+function generateAlbumHTML() {
+    return albumData.map(album => {
+        return `<li>${album.strAlbum}</li>`;
+    });
+};
 
 function render(){
     $artistName.html(artistData.strArtist);
     $artistPortrait.attr('src', artistData.strArtistThumb);
     $artistBio.html(artistData.strBiographyEN);
     $artistOrigin.html(artistData.strCountry);
+    $flag.attr('class', `${artistData.strCountry.toLowerCase()} flag`)
     $artistBirth.html(artistData.intFormedYear);
     $artistDeath.html(artistData.strDisbanded === null ? "Present" : artistData.strDisbanded);
     $artistGenre.html(artistData.strGenre)

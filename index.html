@@ -45,7 +45,7 @@
         <div><p><span id="artist-bio"></span></p></div>
         <div>
             <ol>
-                <li>Origin: <span id="origin"></span><i class="united states flag"></i></li>
+                <li>Origin: <span id="origin"></span><i id="flag"></i></li>
                 <li>Years Active: <span id="year-formed"></span> - <span id="year-disbanded"></span></li>
                 <li>Genre: <span id="genre"></span></li>
             </ol>
@@ -53,27 +53,44 @@
     </main>
 
     <!-- modal structure -->
+    <div class="modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="" alt="" id="cover">
+                    <h4 id="album-name"></h4>
+                    <p id="year"></p>
+                    <p id="record-label"></p>
+                    <p id="album-bio"></p>
+                    <ol id="tracklist"></ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div id="modal1" class="modal">
-        <li>
-            <div>album 1 name <span>detail link</span>
-            </div>
-        </li>
-        <li>
-            <div>album 2 name <span>detail link</span>
-            </div>
-        </li>
+        <ul id="albums">
+
+        </ul>
         <div class="modal-content">
-            <img src="" alt="" id="cover">
-            <h4 id="album-name"></h4>
-            <p id="year"></p>
-            <p id="record-label"></p>
-            <p id="album-bio"></p>
-            <ol id="tracklist"></ol>
+
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close"></a>
         </div>            
     </div>
-    <footer>Footer</footer>
+    <!-- <footer>Footer</footer> -->
 </body>
 </html>
