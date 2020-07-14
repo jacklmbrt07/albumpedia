@@ -24,8 +24,6 @@
     <!-- Local JS -->
     <script defer src="./js/script.js"></script>
 
-\
-
     <title>Albumpedia</title>
 </head>
 <body>
@@ -42,10 +40,11 @@
 
 
 
-    <main class="container">
+    <main>
+      <div class="container">
         <div><h3 id="artist-name"></h3></div>
         <div id="artist-portrait"><img src="" alt="artist-image" ></div>
-        <div><p><span id="artist-bio"></span></p></div>
+        <div id="bio-container"><p><span id="artist-bio"></span></p></div>
         <div>
             <ol>
                 <li>Origin: <span id="origin"></span> <i id="flag"></i></li>
@@ -53,20 +52,23 @@
                 <li>Genre: <span id="genre"></span></li>
             </ol>
         </div>
+      </div>
+      <div class="container2">
         <section>
             <h3>Albums</h3>
-            <ul id="albums">
+            <ul id="albums" class="list-group">
 
             </ul>
             <h4>EPs</h4>
-            <ul id="eps">
+            <ul id="eps" class="list-group">
             
             </ul>
             <h4>Live Recordings</h4>
-            <ul id="live-recs">
+            <ul id="live-recs" class="list-group">
 
             </ul>
         </section>
+      </div>
     </main>
 
     <!-- modal structure -->

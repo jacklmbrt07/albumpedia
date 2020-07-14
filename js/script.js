@@ -54,7 +54,7 @@ function generateAlbumHTML(format) {
         return (a.intYearReleased > b.intYearReleased) ? 1 : -1
     }).map(album => { //map is returning html string
         if (album.strReleaseFormat === format){
-        return `<li>${album.strAlbum} - <span>${album.intYearReleased}</span></li>`;
+        return `<li class="list-group-item">${album.strAlbum} - <span>${album.intYearReleased}</span></li>`;
         }
     });
 };
@@ -65,16 +65,16 @@ function renderBio(){
     $artistPortrait.attr('src', artistData.strArtistThumb);
     $artistBio.html(artistData.strBiographyEN);
     $artistOrigin.html(artistData.strCountry);
-    $flag.attr('class', `${artistData.strCountry.toLowerCase()} flag`)
+    $flag.attr('class', `${artistData.strCountryCode.toLowerCase()} flag`)
     $artistBirth.html(artistData.intFormedYear);
     $artistDeath.html(artistData.strDisbanded === null ? "Present" : artistData.strDisbanded);
     $artistGenre.html(artistData.strGenre)
 }
 
 function renderRecords(){
-    $ulAlbums.append(generateAlbumHTML("Album"));
-    $ulEPs.append(generateAlbumHTML("EP"));
-    $ulLiveRecs.append(generateAlbumHTML("Live"));
+    $ulAlbums.html(generateAlbumHTML("Album"));
+    $ulEPs.html(generateAlbumHTML("EP"));
+    $ulLiveRecs.html(generateAlbumHTML("Live"));
 }
 
     

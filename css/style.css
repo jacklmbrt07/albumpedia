@@ -6,6 +6,53 @@
 
 
 
+.container{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 1fr 3fr 2fr;
+    grid-gap: 20px;
+}
+
+#artist-name{
+    /* border: solid 5px black; */
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+#artist-portrait{
+    /* border: solid 5px black; */
+    grid-column-start: 1;
+    grid-row: span 1;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+
+#bio-container {
+    /* border: solid 5px black; */
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-row-end: 4;
+}
+
+ol {
+    list-style: none;
+    /* border: solid 5px black; */
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.container2 {
+    margin-left: 150px;
+}
+
+ul {
+    list-style: none;
+}
+
 footer {
     position: fixed;
     left: 0;
