@@ -1,54 +1,47 @@
-
-
 /*----- constants -----*/
-const artistURL = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=radiohead`;
 
 /*----- app's state (variables) -----*/
-let userArtist;
-let apiKey = "1"; // free
+let userArtist; 
 /*----- cached element references -----*/
 const $artistName = $('#artist-name');
 const $artistPortrait = $('#artist-portrait img');
 const $artistBio = $('#artist-bio');
 const $artistOrigin = $('#origin');
-const $flag = $('#flag')
+const $flag = $('#flag');
 const $artistBirth = $('#year-formed');
 const $artistDeath = $('#year-disbanded');
 const $artistGenre = $('#genre');
 const $ulAlbums = $('#albums');
 const $ulEPs = $('#eps');
-const $ulLiveRecs = $('#live-recs')
+const $ulLiveRecs = $('#live-recs');
 const $input = $('input[type="text"]');
 
-/*----- event listeners -----*/
-// $('form').on('submit', handleGetData);
-handleGetArtistData();
-/*----- functions -----*/
-//initialize modal
 
+/*----- event listeners -----*/
+$('form').on('submit', handleGetArtistData);
+// handleGetArtistData();
+/*----- functions -----*/
 // retrieve ajax from server
-function handleGetArtistData(event) {
-    // event.preventDefault()
+function handleGetArtistData(/*event*/) {
+    event.preventDefault()
     userArtist = $input.val();
     $.ajax({
-        url: "https://www.theaudiodb.com/api/v1/json/1/search.php?s=radiohead" //+ userArtist
+        url: `https://www.theaudiodb.com/api/v1/json/${config.API_KEY}/search.php?s=${userArtist}` // ${userArtist}
     }).then(
         (data) => {
             artistData = data.artists[0];// accesses an object of artist info
-            render();
+            renderBio();
         },
         (error) => {
             console.log('error is ' + error);
         }
     );
     $.ajax({
-        url: "https://www.theaudiodb.com/api/v1/json/1/searchalbum.php?s=radiohead"
+        url: `https://www.theaudiodb.com/api/v1/json/${config.API_KEY}/searchalbum.php?s=${userArtist}`
     }).then(
         (data) => {
             albumData = data.album; // acceses an array of object per album 
-            $ulAlbums.append(generateAlbumHTML("Album"));
-            $ulEPs.append(generateAlbumHTML("EP"));
-            $ulLiveRecs.append(generateAlbumHTML("Live"));
+            renderRecords();
         },
         (error) => {
             console.log("error is " + error);
@@ -67,7 +60,7 @@ function generateAlbumHTML(format) {
 };
 
 
-function render(){
+function renderBio(){
     $artistName.html(artistData.strArtist);
     $artistPortrait.attr('src', artistData.strArtistThumb);
     $artistBio.html(artistData.strBiographyEN);
@@ -77,6 +70,13 @@ function render(){
     $artistDeath.html(artistData.strDisbanded === null ? "Present" : artistData.strDisbanded);
     $artistGenre.html(artistData.strGenre)
 }
+
+function renderRecords(){
+    $ulAlbums.append(generateAlbumHTML("Album"));
+    $ulEPs.append(generateAlbumHTML("EP"));
+    $ulLiveRecs.append(generateAlbumHTML("Live"));
+}
+
     
 // APIKEY should be set to 1
     // Return Artist details from artist name
