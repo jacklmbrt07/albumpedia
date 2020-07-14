@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- MDBootstrap flags -->
+    <link href="./css/MDB-Free_4.19.1/css/addons/flag.min.css" rel="stylesheet">
+
     <!-- Bootstrap -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -37,15 +40,14 @@
         </div>
     </nav>
     <main class="container">
-        <div><h3><span id="artist-name"></span></h3></div>
-        <div><img src="" alt="" id="artist-portrait">artist image</div>
-        <div><p>bio goes here <span id="artist-bio"></span></p></div>
+        <div><h3 id="artist-name"></h3></div>
+        <div id="artist-portrait"><img src="" alt="artist-image" ></div>
+        <div><p><span id="artist-bio"></span></p></div>
         <div>
             <ol>
-                <li>artist origin w/ flag icon: <span id="origin"></span></li>
-                <li>year formed: <span id="year-formed"></span></li>
-                <li>member names: <span id="members"></span></li>
-                <li>genre: <span id="genre"></span></li>
+                <li>Origin: <span id="origin"></span><i class="united states flag"></i></li>
+                <li>Years Active: <span id="year-formed"></span> - <span id="year-disbanded"></span></li>
+                <li>Genre: <span id="genre"></span></li>
             </ol>
         </div>
     </main>
