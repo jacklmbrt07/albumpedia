@@ -78,3 +78,35 @@ footer {
 .list-group-item {
     font-size: 1.4rem;
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    /* border: solid 1px black; */
+    border-bottom: 1px solid #ddd; 
+    padding: 8px;
+}
+
+#cover{
+    width: 100px;
+}
+#album-name {
+    width: 600px;
+    font-size: 1.2rem;
+    word-wrap: normal;
+}
+#album-year {
+    font-style: italic;
+    color: #666666
+}
+#label {
+    font-style: italic;
+    color: #666666  
+}
+#review{
+    color: dodgerblue;
+    text-decoration: underline;
+}
