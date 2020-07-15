@@ -4,19 +4,24 @@
     box-sizing: border-box;
 }
 
+#title {
+    color: dodgerblue;
+    font-family: 'Roboto';
+}
 
 
 .container{
     display: grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 30% 70%;
     grid-template-rows: 1fr 3fr 2fr;
     grid-gap: 20px;
 }
-
-#artist-name{
+#artist-name-container {
+    grid-column: 1 / span 2;
     /* border: solid 5px black; */
-    grid-column: span 1;
-    grid-row: span 1;
+}
+#artist-name{
+    margin-top: 20px;
     font-size: 4rem;
 }
 
@@ -37,6 +42,7 @@
     grid-column-start: 2;
     grid-row-start: 2;
     grid-row-end: 4;
+    font-size: 14px;
 }
 
 ol {
@@ -44,10 +50,15 @@ ol {
     /* border: solid 5px black; */
     grid-column: span 1;
     grid-row: span 1;
+    text-align: left;
+    font-size: .9rem;
 }
 
 .container2 {
-    margin-left: 150px;
+    margin: -100px 0px 0px 165px;
+    padding-bottom: 50px;
+    /* border: solid 5px black; */
+    max-width: 1200px;
 }
 
 ul {
