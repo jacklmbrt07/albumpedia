@@ -1,5 +1,6 @@
 /*----- constants -----*/
-
+// https://www.theaudiodb.com/api/v1/json/5d656564694f534d656564/search.php?s=radiohead
+// https://www.theaudiodb.com/api/v1/json/5d656564694f534d656564/searchalbum.php?s=radiohead
 /*----- app's state (variables) -----*/
 let userArtist; 
 /*----- cached element references -----*/
@@ -22,15 +23,20 @@ const $modal = $('.modal');
 /*----- event listeners -----*/
 
 $('form').on('submit', handleGetArtistData);
-$modal.on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.modal-body').text('New message to ' + button)
-    modal.find('.modal-body input').val(recipient)
-  })
+
+$tAlbums.on('click', 'span', toggleReviewModal)
+
+
+
+// $modal.on('show.bs.modal', function (event) {
+//     var button = $(event.relatedTarget) // Button that triggered the modal
+//     var recipient = button.data('whatever') // Extract info from data-* attributes
+//     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+//     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+//     var modal = $(this)
+//     modal.find('.modal-body').text('New message to ' + button)
+//     modal.find('.modal-body input').val(recipient)
+//   })
 
 /*----- functions -----*/
 
@@ -81,11 +87,11 @@ function generateAlbumHTML(format) {
     }).map((album, index) => { //map is returning html string
         if (album.strReleaseFormat === format){
             return `<tr>
-                        <td id="cover"><img src="${album.strAlbumThumb}" alt="${album.strAlbum}" height="100" width="100"></td>
+                        <td id="cover"><img src="${album.strAlbumThumb === null ? 'https://www.tibs.org.tw/images/default.jpg' : album.strAlbumThumb}" alt="${album.strAlbum}" height="100" width="100"></td>
                         <td id="album-name">${album.strAlbum}</td>
                         <td id="album-year">${album.intYearReleased}</td>
                         <td id="label">${album.strLabel === null ? " " : album.strLabel}</td>
-                        <td id="review"><span id="click" data-toggle="modal" data-target="#modal1">Review${index}</span></td>
+                        <td><span data-index="${index}">Review</span></td>
                     </tr>`;
         }
         
@@ -94,10 +100,11 @@ function generateAlbumHTML(format) {
 };
 
 
+
+
 function renderBio(){
     $artistName.html(artistData.strArtist);
     $artistPortrait.html(`<img src="${artistData.strArtistThumb}" alt="artist-image" id="artist-img"></img>`);
-    // $artistPortrait.attr('src', artistData.strArtistThumb);
     $artistBio.html(artistData.strBiographyEN);
     $('.origin-header').text('Origin: ')
     $artistOrigin.html(artistData.strCountry);
@@ -117,8 +124,19 @@ function renderRecords(){
     $tAlbums.html(generateAlbumHTML("Album"));
     $tEPs.html(generateAlbumHTML("EP"));
     $tLiveRecs.html(generateAlbumHTML("Live"));
-    $('#click').on('click', setModal)
+    // $body.outerHTML(generateModal());
+    // $('#click').on('click', function(){
+    //     console.log(event.target.dataset.url)
+    //     console.log("clicked")
+    // })
+}
 
+function toggleReviewModal(){
+    console.log('clicked')
+    var i = this.dataset.index
+    console.log(albumData[i].strReview)
+    $('#album-review').html(albumData[i].strReview);
+    $modal.modal('toggle');
 }
 
 // function setModal(){

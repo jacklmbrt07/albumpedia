@@ -7,7 +7,6 @@ a wiki like webpage will render showing the artists stats, photo, biography.
 
 below that is a table of the artist's published recordings, sorted by albums, EPs, and Live albums. 
 
-click the album cover image to see a magnified version
 click 'review' to see a review from a critic
 click 'tracklist' to see name of tracks within the album.
 
