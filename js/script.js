@@ -83,11 +83,11 @@ function generateAlbumHTML(format) {
                         <td id="album-year">${album.intYearReleased}</td>
                         <td id="label">${album.strLabel === null ? " " : album.strLabel}</td>
                         <td>
-                            <span data-index="${index}">Review</span>
+                            <span id="review" data-index="${index}" style="${album.strReview ? 'color:dodgerblue; text-decoration:underline' : 'display:none'}">Review</span>
                         </td>
                     </tr>`;
         }
-    });
+    });  
 };
 
 function renderBio(){
@@ -119,3 +119,4 @@ function toggleReviewModal(){
     $('#album-review').html(albumData[i].strReview);
     $modal.modal('toggle');
 }
+

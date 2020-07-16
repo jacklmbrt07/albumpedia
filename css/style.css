@@ -9,6 +9,7 @@
 }
 
 .container{
+    margin: 5rem;
     display: grid;
     grid-template-columns: 30% 70%;
     grid-template-rows: 1fr 3fr 2fr;
@@ -17,7 +18,6 @@
 
 #artist-name-container {
     grid-column: 1 / span 2;
-    /* border: solid 5px black; */
 }
 
 #artist-name{
@@ -26,7 +26,6 @@
 }
 
 #artist-portrait{
-    /* border: solid 5px black; */
     grid-column-start: 1;
     grid-row: span 1;
 }
@@ -38,7 +37,6 @@
 }
 
 #bio-container {
-    /* border: solid 5px black; */
     grid-column-start: 2;
     grid-row-start: 2;
     grid-row-end: 4;
@@ -47,7 +45,6 @@
 
 ol {
     list-style: none;
-    /* border: solid 5px black; */
     grid-column: span 1;
     grid-row: span 1;
     text-align: left;
@@ -57,7 +54,6 @@ ol {
 .container2 {
     margin: -100px 0px 0px 165px;
     padding-bottom: 50px;
-    /* border: solid 5px black; */
     max-width: 1200px;
 }
 
@@ -85,7 +81,6 @@ table {
 }
 
 td {
-    /* border: solid 1px black; */
     border-bottom: 1px solid #ddd; 
     padding: 8px;
 }
@@ -110,7 +105,6 @@ td {
     color: #666666  
 }
 
-#review{
-    color: dodgerblue;
-    text-decoration: underline;
+#review:hover {
+    cursor: pointer;
 }

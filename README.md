@@ -14,8 +14,10 @@ Click 'review' to see a review from a critic.
 - CSS
 - Javascript
 - Bootstrap
-- jQuery
+- jQuery (with ajax function)
+- REST API
 - MDBootstrap (for flag icons)
+
 
 API Key is hidden.
 
