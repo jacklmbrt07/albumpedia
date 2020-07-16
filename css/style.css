@@ -1,4 +1,3 @@
-/* font-family: 'Roboto', sans-serif; */
 
 * {
     box-sizing: border-box;
@@ -9,17 +8,18 @@
     font-family: 'Roboto';
 }
 
-
 .container{
     display: grid;
     grid-template-columns: 30% 70%;
     grid-template-rows: 1fr 3fr 2fr;
     grid-gap: 20px;
 }
+
 #artist-name-container {
     grid-column: 1 / span 2;
     /* border: solid 5px black; */
 }
+
 #artist-name{
     margin-top: 20px;
     font-size: 4rem;
@@ -93,19 +93,23 @@ td {
 #cover{
     width: 100px;
 }
+
 #album-name {
     width: 600px;
     font-size: 1.4rem;
     word-wrap: normal;
 }
+
 #album-year {
     font-style: italic;
     color: #666666
 }
+
 #label {
     font-style: italic;
     color: #666666  
 }
+
 #review{
     color: dodgerblue;
     text-decoration: underline;
