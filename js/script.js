@@ -16,69 +16,42 @@ const $tAlbums = $('#albums');
 const $tEPs = $('#eps');
 const $tLiveRecs = $('#live-recs');
 const $input = $('input[type="text"]');
+const $modal = $('.modal');
+
 
 /*----- event listeners -----*/
 
 $('form').on('submit', handleGetArtistData);
+$modal.on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('whatever') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-body').text('New message to ' + button)
+    modal.find('.modal-body input').val(recipient)
+  })
 
 /*----- functions -----*/
 
+//initialize modal
 
 
 // retrieve ajax from server
-// function renderHome(){
-//     $body.append(`<main><div class="page-header text-center"><h1>Welcome to Albumpedia. <br> Search for an artist at the top right corner ^</h1></div></main>`)
-// }
+$body.append(`<main><div class="page-header text-center"><h1>Welcome to Albumpedia. <br> Search for an artist at the top right corner ^</h1></div></main>`)
 
-// function renderMain(){
-//     $('main').html(()=>{return`
-//     <div class="search-main">
-//     <div class="container">
-//         <div id="artist-name-container"><h3 id="artist-name"></h3></div>
-//         <div id="artist-portrait"><img src="" alt="artist-image" id="artist-img"></div>
-//         <div id="bio-container"><p><span id="artist-bio"></span></p></div>
-//         <div>
-//           <ol>
-//               <li><b>Origin: </b><span id="origin"></span> <i id="flag"></i></li>
-//               <li><b>Years Active: </b><span id="year-formed"></span> - <span id="year-disbanded"></span></li>
-//               <li><b>Genre: </b> <span id="genre"></span></li>
-//           </ol>
-//         </div>
-//     </div>
-//     <div class="container2">
-//       <section>
-//           <h3>Albums</h3>
-//           <br>
-//           <table>
-//             <tbody id="albums"></tbody>
-//           </table>
-//           <br>
-//           <h4>EPs</h4>
-//           <br>
-//           <table>
-//             <tbody id="eps"></tbody>
-//           </table>
-//           <br>
-//           <h4>Live Recordings</h4>
-//           <br>
-//           <table>
-//             <tbody id="live-recs"></tbody>
-//           </table>
-//           <br>
-//       </section>
-//     </div>
-//   </div>`})
-// };
 
 function handleGetArtistData(event) {
+    $('.page-header').remove();
     event.preventDefault()
     userArtist = $input.val();
+
+    //if !isdetal{
     $.ajax({
         url: `https://www.theaudiodb.com/api/v1/json/${config.API_KEY}/search.php?s=${userArtist}`, // ${userArtist}
     }).then(
         (data) => {
             artistData = data.artists[0];// accesses an object of artist info
-            // renderMain();
             renderBio();
         },
         (error) => {
@@ -96,24 +69,27 @@ function handleGetArtistData(event) {
             console.log("error is " + error);
         }
     )
+
 }
+
+
 
 
 function generateAlbumHTML(format) {
     return albumData.sort((a, b) => {  // sort is rearranging albums chronologically
         return (a.intYearReleased > b.intYearReleased) ? 1 : -1
-    }).map(album => { //map is returning html string
+    }).map((album, index) => { //map is returning html string
         if (album.strReleaseFormat === format){
             return `<tr>
                         <td id="cover"><img src="${album.strAlbumThumb}" alt="${album.strAlbum}" height="100" width="100"></td>
                         <td id="album-name">${album.strAlbum}</td>
                         <td id="album-year">${album.intYearReleased}</td>
-                        <td id="label">${album.strLabel}</td>
-                        <td id="review"><span id="click" data-toggle="modal" data-target="#modal1" >Review</span></td>
+                        <td id="label">${album.strLabel === null ? " " : album.strLabel}</td>
+                        <td id="review"><span id="click" data-toggle="modal" data-target="#modal1">Review${index}</span></td>
                     </tr>`;
         }
+        
     });
-
     
 };
 
@@ -141,7 +117,16 @@ function renderRecords(){
     $tAlbums.html(generateAlbumHTML("Album"));
     $tEPs.html(generateAlbumHTML("EP"));
     $tLiveRecs.html(generateAlbumHTML("Live"));
+    $('#click').on('click', setModal)
+
 }
+
+// function setModal(){
+//     let i;
+
+//     $('.modal-body').html('Hello World' + albumData[2].strReview);//what is the i
+//     console.log('clicked')
+// }
 
 // //produce the modal
 // function renderModal(){
