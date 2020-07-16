@@ -26,50 +26,46 @@
 
     <title>Albumpedia</title>
 </head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
+  <h3 id="title">Albumpedia</h3>
+  <div id="search-container">
+      <form action="" class="form-inline my-2 my-lg-0">
+          <input type="text" placeholder="Artist Name" id="input" class="form-control mr-sm-2"/>
+          <input type="submit" value="Search" class="btn btn-outline-primary my-2 my-sm-0" />
+      </form>
+  </div>
+</nav>
 <body>
+  <main>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
-        <h3 id="title">Albumpedia</h3>
-        <div id="search-container">
-            <form action="" class="form-inline my-2 my-lg-0">
-                <input type="text" placeholder="Artist Name" id="input" class="form-control mr-sm-2"/>
-                <input type="submit" value="Search" class="btn btn-outline-primary my-2 my-sm-0" />
-            </form>
-        </div>
-    </nav>
-    
-    <main id="home">
-
-    </main>
-
-    <main id="search-main">
+    <div class="search-main">
       <div class="container">
-        <div id="artist-name-container"><h3 id="artist-name"></h3></div>
-        <div id="artist-portrait"><img src="" alt="artist-image" id="artist-img"></div>
-        <div id="bio-container"><p><span id="artist-bio"></span></p></div>
-        <div>
+          <div id="artist-name-container"><h3 id="artist-name"></h3></div>
+          <div id="artist-portrait"></div>
+          <div id="bio-container"><p><span id="artist-bio"></span></p></div>
+          <div>
             <ol>
-                <li><b>Origin: </b><span id="origin"></span> <i id="flag"></i></li>
-                <li><b>Years Active: </b><span id="year-formed"></span> - <span id="year-disbanded"></span></li>
-                <li><b>Genre: </b> <span id="genre"></span></li>
+                <li><span class="origin-header" style="font-weight: bold;"></span><span id="origin"></span> <i id="flag"></i></li>
+                <li><span class="year-header" style="font-weight: bold;"></span><span id="year-formed"></span><span class="-"></span><span id="year-disbanded"></span></li>
+                <li><span class="genre-header" style="font-weight: bold;"></span><span id="genre"></span></li>
             </ol>
-        </div>
+          </div>
       </div>
       <div class="container2">
         <section>
-            <h3>Albums</h3>
+            <h3 class="albums-header"></h3>
             <br>
             <table>
               <tbody id="albums"></tbody>
             </table>
             <br>
-            <h4>EPs</h4>
+            <h4 class="eps-header"></h4>
             <br>
             <table>
               <tbody id="eps"></tbody>
             </table>
             <br>
-            <h4>Live Recordings</h4>
+            <h4 class="live-header"></h4>
             <br>
             <table>
               <tbody id="live-recs"></tbody>
@@ -77,33 +73,26 @@
             <br>
         </section>
       </div>
+    </div>
+  </main>
 
 
-    </main>
+
+
+
 
     <!-- modal structure -->
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
   
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <div class="modal fade" id="modal1" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
         <div class="modal-body">
-          ...
+          <p id="album-review">Review</p>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close" data-dismiss="modal" data-target="#modal1">Close</a>
       </div>
     </div>
   </div>
