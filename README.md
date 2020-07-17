@@ -1,5 +1,7 @@
 ### Albumpedia app by Jack Lambert, July 2020
 
+Link to the application [here](https://jacklmbrt07.github.io/albumpedia/)
+
 A simple app which retrieves data from [www.theaudiodb.com](www.theaudiodb.com)
 
 Enter in a musician or music artist in the search bar, Enter search button, and
