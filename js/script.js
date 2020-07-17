@@ -23,8 +23,7 @@ const $modal = $('.modal');
 
 $('form').on('submit', handleGetArtistData);
 
-$tAlbums.on('click', 'span', toggleReviewModal)
-
+$tAlbums.on('click', 'span', toggleReviewModal);
 
 /*----- functions -----*/
 
@@ -94,28 +93,30 @@ function renderBio(){
     $artistName.html(artistData.strArtist);
     $artistPortrait.html(`<img src="${artistData.strArtistThumb}" alt="artist-image" id="artist-img"></img>`);
     $artistBio.html(artistData.strBiographyEN);
-    $('.origin-header').text('Origin: ')
+    $('.origin-header').text('Origin: ');
     $artistOrigin.html(artistData.strCountry);
-    $flag.attr('class', `${artistData.strCountryCode.toLowerCase()} flag`)
-    $('.year-header').text('Years Active: ')
-    $('.-').text(' - ')
+    $flag.attr('class', `${artistData.strCountryCode.toLowerCase()} flag`);
+    $('.year-header').text('Years Active: ');
+    $('.-').text(' - ');
     $artistBirth.html(artistData.intFormedYear);
     $artistDeath.html(artistData.strDisbanded === null ? "Present" : artistData.strDisbanded);
-    $('.genre-header').text('Genre: ')
-    $artistGenre.html(artistData.strGenre)
+    $('.genre-header').text('Genre: ');
+    $artistGenre.html(artistData.strGenre);
+    $('.website').html(`<a href="${artistData.strWebsite}" target="_blank">${artistData.strWebsite}</a>`);
+    $('.twitter').html(`<a href="${artistData.strTwitter}" target="_blank"><i style="font-size:24px" class="fa">&#xf099;</i></a>`);
 }
 
 function renderRecords(){
-    $('.albums-header').html('Albums')
-    $('.eps-header').html('EPs')
-    $('.live-header').html('Live Recordings')
+    $('.albums-header').html('Albums');
+    $('.eps-header').html('EPs');
+    $('.live-header').html('Live Recordings');
     $tAlbums.html(generateAlbumHTML("Album"));
     $tEPs.html(generateAlbumHTML("EP"));
     $tLiveRecs.html(generateAlbumHTML("Live"));
 }
 
 function toggleReviewModal(){
-    var i = this.dataset.index
+    var i = this.dataset.index;
     $('#album-review').html(albumData[i].strReview);
     $modal.modal('toggle');
 }
