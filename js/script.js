@@ -39,7 +39,7 @@ function handleGetArtistData(event) {
     userArtist = $input.val();
 
     $.ajax({
-        url: `https://www.theaudiodb.com/api/v1/json/${config.API_KEY}/search.php?s=${userArtist}`,
+        url: `https://project1-629.herokuapp.com/jack/artist?search=${userArtist}`,
     }).then(
         (data) => {
             artistData = data.artists[0];// accesses an object of artist info
@@ -51,7 +51,7 @@ function handleGetArtistData(event) {
     );
 
     $.ajax({
-        url: `https://www.theaudiodb.com/api/v1/json/${config.API_KEY}/searchalbum.php?s=${userArtist}`
+        url: `https://project1-629.herokuapp.com/jack/album?search=${userArtist}`
     }).then(
         (data) => {
             albumData = data.album; // acceses an array of object per album 
