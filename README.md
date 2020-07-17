@@ -29,6 +29,9 @@ Homepage is included.
 
 ##### Screenshots
 
+Wireframe Design
+![Wireframe](images/screenshot-albumpedia-6.png)
+
 Home Page
 ![Home Page](images/screenshot-albumpedia-0.jpg)
 
