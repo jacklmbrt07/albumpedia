@@ -28,6 +28,7 @@ Two ajax requests are used, one to retrieve artist info and another to retrieve 
 Homepage is included.
 
 ##### Screenshots
+
 Wireframe Design
 ![wireframe](images/screenshot-albumpedia-6.png)
 
